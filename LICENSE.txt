@@ -1,0 +1,56 @@
+Proprietäre Lizenz / Proprietary License
+
+Copyright (c) 2025 Luqqua
+
+Alle Rechte vorbehalten.
+
+Dieser Quellcode und alle zugehörigen Dateien dürfen ohne ausdrückliche schriftliche Genehmigung des Urhebers weder kopiert, verbreitet, veröffentlicht noch verändert werden.
+
+Erlaubt:
+- Die private Nutzung des Codes zu Lern- und Analysezwecken ist gestattet, solange der Code nicht veröffentlicht, verbreitet, verändert oder für kommerzielle Zwecke genutzt wird.
+
+Nicht erlaubt:
+- Kommerzielle Nutzung jeglicher Art ohne ausdrückliche schriftliche Genehmigung des Urhebers. Dies umfasst, aber ist nicht beschränkt auf:
+  - Monetarisierung durch Werbung (z.B. Google AdSense).
+  - Verkauf von Produkten oder Dienstleistungen, die auf diesem Code basieren.
+  - Nutzung in bezahlten Dienstleistungen oder Abonnements.
+
+- Die Erstellung von konkurrierenden Tools oder Websites, die ähnliche Funktionen anbieten, ist ausdrücklich untersagt.
+
+- Veröffentlichung oder Verbreitung des Codes, auch in veränderter Form, ohne Genehmigung.
+
+- Modifikation des Codes ohne ausdrückliche Zustimmung.
+
+Zuwiderhandlungen werden strafrechtlich verfolgt.
+
+Für Anfragen zur Nutzung oder Lizenzierung kontaktieren Sie: Luqqua@proton.me
+
+
+---
+
+Proprietary License
+
+Copyright (c) 2025 Luqqua
+
+All rights reserved.
+
+This source code and all related files may not be copied, distributed, published, or modified without the explicit written permission of the author.
+
+Permitted:
+- Private use of the code for learning and analysis purposes is allowed, provided the code is not published, distributed, modified, or used for commercial purposes.
+
+Not permitted:
+- Commercial use of any kind without the explicit written permission of the author. This includes, but is not limited to:
+  - Monetization through advertising (e.g., Google AdSense).
+  - Sale of products or services based on this code.
+  - Use in paid services or subscriptions.
+
+- Creation of competing tools or websites offering similar functionality is strictly prohibited.
+
+- Publication or distribution of the code, even in modified form, without permission.
+
+- Modification of the code without explicit consent.
+
+Violations will be prosecuted.
+
+For inquiries regarding usage or licensing, please contact: Luqqua@proton.me
