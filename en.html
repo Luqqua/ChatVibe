@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ChatVibe | Twitch Chat Analysis Tool for Highlights & KPIs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="ChatVibe is a Twitch chat analysis tool for detecting highlights, viral moments, and KPIs like message length, chat activity, and community diversity. Optimize content for YouTube Shorts, TikTok, and boost your cross-platform reach.">
+  <meta name="keywords" content="Twitch Chat Analysis, Highlight Detection, Viral Moments, KPIs, Message Length, Chat Activity, Community Diversity, YouTube Shorts, TikTok, Cross-Platform Reach, Time-Saving, Streaming Optimization">
+  <meta name="author" content="ChatVibe Team">
+
+  <link rel="stylesheet" href="/css/index.css" />
+</head>
+
+<body>
+
+  <div class="hero">
+    <div class="hero-header">
+      <h1>ChatVibe</h1>
+      <div class="hero-buttons">
+        <button onclick="window.location.href='infoen.html'">Info</button>
+        <button onclick="window.location.href='index.html'">Deutsch</button>
+      </div>
+    </div>
+    
+    <h4>
+      Provides a quick analysis of uploaded chat data with highlights, KPIs 
+      (activity, diversity), and top words. This makes it easy to identify active 
+      phases, spot viral moments, and uncover optimization potential at a glance.
+    </h4>
+  </div>
+
+  <noscript>
+    <div style="background-color: #ffcccc; color: #000; padding: 20px; text-align: center; border: 2px solid #ff0000; border-radius: 10px; font-family: Arial, sans-serif;">
+      <h2>⚠️ JavaScript is Disabled</h2>
+      <p>Our <strong>Twitch Chat Analysis Tool</strong> requires JavaScript to function properly. Please enable JavaScript in your browser to access <strong>automatic highlight detection</strong> and the analysis of <strong>viral moments</strong>.</p>
+      <p>This tool helps you analyze <strong>key performance indicators (KPIs)</strong> such as <strong>message length</strong>, <strong>chat activity</strong>, and <strong>community diversity</strong>. Create <strong>optimized content</strong> for <strong>YouTube Shorts</strong>, <strong>TikTok</strong>, and other platforms to boost your <strong>cross-platform reach</strong>.</p>
+      <p>Without JavaScript, analyzing <strong>Twitch streaming chat logs</strong> is not possible, and you'll miss out on valuable insights and <strong>time-saving features</strong>. Enable JavaScript now to maximize your growth!</p>
+    </div>
+  </noscript>
+  
+  <div class="outer-form-box">
+    <h3>Analysis Input</h3>
+    
+    <form id="analysis-form" enctype="multipart/form-data">
+      
+      <div class="form-box">
+        <h4>File Upload</h4>
+        <label for="chat-file">Upload Twitch Chat CSV or JSON File:</label>
+        <input type="file" id="chat-file" accept=".csv,.json" required><br><br>
+      </div>
+
+      <div class="form-box">
+        <h4>Analysis Settings</h4>
+        <label for="aggregation-interval">
+          Observation Interval (Recommended: 60):
+        </label>
+        <input type="number" id="aggregation-interval" value="60" required><br><br>
+
+        <label for="std-factor">
+          Activity Deviation from Average (Recommended: Factor 2):
+        </label>
+        <input type="number" id="std-factor" step="0.1" value="2" required><br><br>
+
+        <label for="logic-mode">Detection Mode:</label>
+        <select id="logic-mode">
+          <option value="AND">Deviation from Average AND from Previous Interval</option>
+          <option value="OR">Deviation from Average OR from Previous Interval</option>
+        </select><br><br>
+
+        <label for="slope-threshold">
+          Activity Deviation from Previous Interval (Recommended: 10 Messages):
+        </label>
+        <input type="number" id="slope-threshold" value="10" required><br><br>
+      </div>
+
+      <div class="form-box">
+        <h4>Time Settings</h4>
+        <label for="context-before">Time Before Highlight (seconds):</label>
+        <input type="number" id="context-before" value="0" required><br><br>
+
+        <label for="context-after">Time After Highlight (seconds):</label>
+        <input type="number" id="context-after" value="0" required><br><br>
+
+        <label for="chat-delay">Twitch Chat Delay:</label>
+        <select id="chat-delay">
+          <option value="0">0s</option>
+          <option value="2">2s</option>
+          <option value="4">4s</option>
+          <option value="6">6s</option>
+        </select><br><br>
+      </div>
+
+      <div class="form-box">
+        <h4>Word Analysis Settings</h4>
+        <label>
+          <input type="checkbox" id="use-blacklist" checked>
+          Use Default Blacklist (who, is...)
+        </label><br><br>
+
+        <label for="custom-blacklist">
+          Custom Blacklist (separate words with commas):
+        </label><br>
+        <textarea id="custom-blacklist" rows="3" cols="50"></textarea><br><br>
+      </div>
+      
+      <button id="final-submit" type="submit">Analyze</button>
+    </form>
+  </div>
+
+  <div id="spinner" style="display: none;">
+    <div class="spinner"></div>
+  </div>
+    
+  <div id="results"></div>
+
+  <div class="outer-form-box">
+    <div class="form-box">
+      <h2>Short Overview</h2>
+      <p>
+        The <strong>Twitch Chat Analysis Tool</strong> evaluates uploaded 
+        chat data (CSV/JSON), which can be obtained from 
+        <a href="https://www.twitchchatdownloader.com/" target="_blank">twitchchatdownloader.com</a> 
+        or the 
+        <a href="https://github.com/lay295/TwitchDownloader" target="_blank">TwitchDownloader</a> on GitHub. 
+        It provides key information at a glance, including highlights, KPIs 
+        (e.g. activity, diversity), and frequently mentioned topics. This 
+        makes it easy to discover active phases, identify viral moments, 
+        and optimize content effectively – even cross-platform, such as 
+        creating short/ TikTok videos. More details can be found 
+        <a href="infoen.html" target="_blank">here</a>.
+      </p>
+    </div>
+  </div>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

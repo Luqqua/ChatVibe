@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ChatVibe | Twitch Chat Analyse-Tool für Highlights & KPIs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="ChatVibe ist ein Analyse-Tool für Twitch-Chat-Logs. Erkenne automatisch Highlights und virale Momente, analysiere KPIs wie Nachrichtenlänge, Aktivität und Community-Diversität. Optimiere Inhalte für YouTube Shorts, TikTok und steigere deine Cross-Plattform-Reichweite.">
+  <meta name="keywords" content="Twitch Chat Analyse, Highlights erkennen, virale Momente, KPIs, Nachrichtenlänge, Chat-Aktivität, Community-Diversität, YouTube Shorts, TikTok, Cross-Plattform Reichweite, Zeitersparnis, Streaming Optimierung">
+  <meta name="author" content="ChatVibe Team">
+
+  <link rel="stylesheet" href="/css/index.css" />
+</head>
+
+<body>
+  <div class="hero">
+    <div class="hero-header">
+      <h1>ChatVibe</h1>
+      <div class="hero-buttons">
+        <button onclick="window.location.href='info.html'">Info</button>
+        <button onclick="window.location.href='en.html'">English</button>
+      </div>
+    </div>
+    
+    <noscript>
+      <div style="background-color: #ffcccc; color: #000; padding: 20px; text-align: center; border: 2px solid #ff0000; border-radius: 10px; font-family: Arial, sans-serif;">
+        <h2>⚠️ JavaScript ist deaktiviert</h2>
+        <p>Unser <strong>Twitch Chat Analyse-Tool</strong> benötigt JavaScript, um korrekt zu funktionieren. Bitte aktiviere JavaScript in deinem Browser, um die <strong>automatische Erkennung von Highlights</strong> und die Analyse von <strong>viralen Momenten</strong> zu nutzen.</p>
+        <p>Mit diesem Tool kannst du <strong>Kennzahlen (KPIs)</strong> zu <strong>Nachrichtenlänge</strong>, <strong>Chat-Aktivität</strong> und <strong>Community-Diversität</strong> analysieren. Es hilft dir, <strong>optimierte Inhalte</strong> für <strong>YouTube Shorts</strong>, <strong>TikTok</strong> und andere Plattformen zu erstellen und deine <strong>Cross-Plattform-Reichweite</strong> zu steigern.</p>
+        <p>Ohne JavaScript ist keine Analyse der <strong>Twitch Streaming Chat-Logs</strong> möglich, wodurch du wichtige Einblicke und <strong>zeitersparende Funktionen</strong> verpasst. Aktiviere JavaScript, um dein Wachstum zu maximieren!</p>
+      </div>
+    </noscript>
+  
+    <h4>
+      Bietet eine schnelle Auswertung hochgeladener Chat-Daten mit Highlights, KPIs (Aktivität, Diversität) und
+      Top-Wörtern. So lassen sich aktive Phasen, virale Momente und Optimierungspotenziale auf einen Blick erkennen
+    <h4>
+  </div>
+
+  <div class="outer-form-box">
+    <h3>Analyse-Input</h3>
+    
+    <form id="analysis-form" enctype="multipart/form-data">
+      
+      <div class="form-box">
+        <h4>Datei-Upload</h4>
+        <label for="chat-file">Upload Twitch Chat CSV File:</label>
+        <input type="file" id="chat-file" accept=".csv, .json" required><br><br>
+      </div>
+
+      <div class="form-box">
+        <h4>Analyse-Einstellungen</h4>
+        <label for="aggregation-interval">
+          Betrachtungsintervall (Empfohlen: 60):
+        </label>
+        <input type="number" id="aggregation-interval" value="60" required><br><br>
+
+        <label for="std-factor">
+          Aktivitäts Abweichung vom Durchschnitt (Empfohlen: Faktor 2):
+        </label>
+        <input type="number" id="std-factor" step="0.1" value="2" required><br><br>
+
+        <label for="logic-mode">Erkennungsmodus:</label>
+        <select id="logic-mode">
+          <option value="AND">Abweichung vom Durchschnitt UND zum Vorintervall</option>
+          <option value="OR">Abweichung vom Durchschnitt ODER zum Vorintervall</option>
+        </select><br><br>
+
+        <label for="slope-threshold">
+          Aktivitäts Abweichung zum Vorintervall (Empfohlen: 10 Nachrichten):
+        </label>
+        <input type="number" id="slope-threshold" value="10" required><br><br>
+      </div>
+
+      <div class="form-box">
+        <h4>Zeit-Einstellungen</h4>
+        <label for="context-before">Zeit vor Highlight einbeziehen (Sekunden):</label>
+        <input type="number" id="context-before" value="0" required><br><br>
+
+        <label for="context-after">Zeit nach Highlight einbeziehen (Sekunden):</label>
+        <input type="number" id="context-after" value="0" required><br><br>
+
+        <label for="chat-delay">Twitch Chat Delay:</label>
+        <select id="chat-delay">
+          <option value="0">0s</option>
+          <option value="2">2s</option>
+          <option value="4">4s</option>
+          <option value="6">6s</option>
+        </select><br><br>
+      </div>
+
+      <div class="form-box">
+        <h4>Wörteranalyse-Einstellungen</h4>
+        <label>
+          <input type="checkbox" id="use-blacklist" checked>
+          Standard Blacklist (wer, ist...)
+        </label><br><br>
+
+        <label for="custom-blacklist">
+          Individuelle Blacklist (Wörter mit Komma trennen):
+        </label><br>
+        <textarea id="custom-blacklist" rows="3" cols="50"></textarea><br><br>
+      </div>
+      
+      <button id="final-submit" type="submit">Analysieren</button>
+    </form>
+  </div>
+
+  <div id="spinner" style="display: none;">
+    <div class="spinner"></div>
+  </div>
+    
+  <div id="results"></div>
+
+  <div class="outer-form-box">
+    <div class="form-box">
+      <h2>Kurz und Knapp</h2>
+      <p>
+        Das <strong>Twitch Chat Analysis Tool</strong> wertet hochgeladene Chat-Daten
+        (CSV/JSON) aus, die über
+        <a href="https://www.twitchchatdownloader.com/" target="_blank">twitchchatdownloader.com</a> oder den
+        <a href="https://github.com/lay295/TwitchDownloader" target="_blank">TwitchDownloader</a> von GitHub bezogen werden können. Es zeigt wichtige
+        Informationen wie Highlights, KPIs (z.B. Aktivität, Diversität) und häufig
+        genannte Themen auf einen Blick. So lassen sich aktive Phasen erkennen,
+        virale Momente identifizieren und Inhalte gezielt optimieren – auch für
+        plattformübergreifende Reichweite, etwa mit Kurz/ TikTok-Videos. Weitere Details
+        sind <a href="info.html" target="_blank">hier</a> zu finden.
+      </p>
+    </div>
+  </div>
+  
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

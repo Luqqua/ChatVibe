@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ChatVibe | Twitch Chat Analyse-Tool für Highlights & KPIs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="ChatVibe ist ein Analyse-Tool für Twitch-Chat-Logs. Erkenne automatisch Highlights und virale Momente, analysiere KPIs wie Nachrichtenlänge, Aktivität und Community-Diversität. Optimiere Inhalte für YouTube Shorts, TikTok und steigere deine Cross-Plattform-Reichweite.">
+  <meta name="keywords" content="Twitch Chat Analyse, Highlights erkennen, virale Momente, KPIs, Nachrichtenlänge, Chat-Aktivität, Community-Diversität, YouTube Shorts, TikTok, Cross-Plattform Reichweite, Zeitersparnis, Streaming Optimierung">
+  <meta name="author" content="ChatVibe Team">
+
+  <link rel="stylesheet" href="/css/index.css" />
+</head>
+
+<body>
+  <div class="hero">
+    <div class="hero-header">
+      <h1>Info - ChatVibe</h1>
+      <div class="hero-buttons">
+        <button onclick="window.location.href='index.html'">Analyse</button>
+        <button onclick="window.location.href='infoen.html'">English</button>
+      </div>
+    </div>
+  </div>
+
+  <noscript>
+    <div style="background-color: #ffcccc; color: #000; padding: 20px; text-align: center; border: 2px solid #ff0000; border-radius: 10px; font-family: Arial, sans-serif;">
+      <h2>⚠️ JavaScript ist deaktiviert</h2>
+      <p>Unser <strong>Twitch Chat Analyse-Tool</strong> benötigt JavaScript, um korrekt zu funktionieren. Bitte aktiviere JavaScript in deinem Browser, um die <strong>automatische Erkennung von Highlights</strong> und die Analyse von <strong>viralen Momenten</strong> zu nutzen.</p>
+      <p>Mit diesem Tool kannst du <strong>Kennzahlen (KPIs)</strong> zu <strong>Nachrichtenlänge</strong>, <strong>Chat-Aktivität</strong> und <strong>Community-Diversität</strong> analysieren. Es hilft dir, <strong>optimierte Inhalte</strong> für <strong>YouTube Shorts</strong>, <strong>TikTok</strong> und andere Plattformen zu erstellen und deine <strong>Cross-Plattform-Reichweite</strong> zu steigern.</p>
+      <p>Ohne JavaScript ist keine Analyse der <strong>Twitch Streaming Chat-Logs</strong> möglich, wodurch du wichtige Einblicke und <strong>zeitersparende Funktionen</strong> verpasst. Aktiviere JavaScript, um dein Wachstum zu maximieren!</p>
+    </div>
+  </noscript>
+
+  <div class="outer-form-box">
+
+    <div class="form-box">
+      <h2>Analyse und Werte erklärt</h2>
+      <p>Unser Twitch Chat Analyse Tool beobachtet den Chat und identifiziert besondere Momente anhand folgender Einstellungen:</p>
+      <ul>
+        <li><strong>Betrachtungsintervall:</strong>Zeitraum in dem Aktivitätsänderungen erfasst werden (empfohlen: 60 Sekunden).</li>
+        <li><strong>Aktivitäts Abweichung vom Durchschnitt:</strong> Wie stark die aktuelle Kommentarzahl über dem Durchschnitt liegen muss (z. B. Faktor 2 = doppelt so viele Kommentare).</li>
+        <li><strong>Detection Mode:</strong>
+          Bestimmt, wie ein Highlight erkannt wird. Im Modus OR wird ein Highlight erkannt, wenn entweder eine Abweichung zum Vorintervall oder eine Abweichung vom Durchschnitt vorliegt. 
+          Im Modus AND wird ein Highlight nur dann erkannt, wenn es beide Voraussetzungen erfüllt.</li>
+        <li><strong>Aktivitäts Abweichung zum Vorintervall:</strong> Differenz der Nachrichtenanzahl zwischen aufeinanderfolgenden Intervallen (z. B. +10 Nachrichten).</li>
+      </ul>
+    </div>
+
+    <div class="form-box">
+      <h2>KPIs (Schlüsselkennzahlen)</h2>
+      <ul>
+        <li>
+          <strong>Activity Score (Messages per minute):</strong> 
+          Misst, wie viele Nachrichten pro Minute gesendet werden.
+        </li>
+        <li>
+          <strong>Diversity Score (Message distribution among chatters):</strong> 
+          Zeigt, wie gleichmäßig die Nachrichten unter den Chat-Teilnehmern verteilt sind.  
+          (1 = gleich verteilt, 0 = dominiert von wenigen)
+        </li>
+        <li>
+          <strong>Average Length:</strong> 
+          Durchschnittliche Anzahl an Zeichen pro Nachricht.
+        </li>
+        <li>
+          <strong>Chat Engagement Index:</strong> 
+          Eine gewichtete Zusammenfassung der obigen KPIs, berechnet als:  
+          0.6 × (Activity Score / 294) + 0.3 × (Diversity Score) + 0.1 × (Average Length / 30).  
+          Die Bezugswerte 294 (Nachrichten/Minute) und 30 (Zeichen) entsprechen den medianen Werten der Top 100 Streamer –  
+          ein Index von 1 repräsentiert somit das typische Engagement eines Top-Streams.
+        </li>
+      </ul>
+    </div>
+
+    <div class="form-box">
+      <h2>Voraussetzungen &amp; Dateiformate</h2>
+      <p>
+        Für den Betrieb des Tools wird eine CSV- oder JSON-Datei mit Chat-Logs benötigt. Wir unterstützen dabei direkt die Formate von 
+        <a href="https://www.twitchchatdownloader.com/" target="_blank">twitchchatdownloader.com</a> und dem
+        <a href="https://github.com/lay295/TwitchDownloader" target="_blank">TwitchDownloader</a>. Die Chat-Logs können dort direkt heruntergeladen werden.  
+        Alternativ können auch CSV- oder JSON-Dateien verwendet werden, die den folgenden Anforderungen entsprechen. So können auch Chats von anderen Plattformen, die nicht von Twitch sind, verwendet werden.
+      </p>      
+      <p>
+        Die CSV-Datei muss mindestens drei Spalten mit den folgenden Überschriften haben. Die Spaltenüberschriften müssen exakt in Kleinschreibung und mit Unterstrichen geschrieben sein:
+      </p>
+      <ul>
+        <li>time: Sekunden seit Beginn des Streams (Zahlenwert)</li>
+        <li>user_name: Name des Chat-Users</li>
+        <li>message: Der Inhalt der Chat-Nachricht</li>
+      </ul>
+      <p>
+        Die JSON-Datei muss ein Feld <code>comments</code> enthalten, dessen Wert ein Array ist.
+        Jedes Element in diesem Array ist ein Objekt und muss folgende Felder besitzen:
+      </p>
+      <ul>
+        <li>content_offset_seconds: Sekunden seit Beginn des Streams</li>
+        <li>commenter.display_name: Anzeigename des Users</li>
+        <li>message.body: Inhalt der Chat-Nachricht</li>
+      </ul>
+      <p>
+        Fehlen diese Felder, kann die Datei nicht analysiert werden.
+      </p>
+    </div>
+
+    <div class="form-box">
+      <div class="einsatzmoeglichkeiten">
+        <h2>Wofür ist die Analyse geeignet?</h2>
+        <p>
+          Mit diesem Tool werden Chat-Highlights schnell gefunden, ohne mühsam im
+          Verlauf suchen zu müssen. Interessante Stellen können anschließend im VOD
+          geprüft werden, um aktive Phasen und Spitzenzeiten zu identifizieren oder
+          besonders oft genannte Themen und Keywords zu ermitteln.
+        </p>
+        <ul>
+          <li>Höhepunkte im Chatverlauf markieren und im VOD überprüfen</li>
+          <li>Aktive Phasen sowie Spitzenzeiten auf einen Blick erfassen</li>
+          <li>Besonders oft genannte Themen und Keywords herausfiltern</li>
+          <li>KPIs wie Aktivität und Diversität der Kommentare messen</li>
+        </ul>
+        <p>
+          Die gewonnenen Erkenntnisse helfen dabei, Inhalte und Streaming-Strategien
+          zu optimieren und eignen sich auch für plattformübergreifende Nutzung –
+          beispielsweise zum Erstellen von TikTok-Highlights. Zudem ist das Tool
+          hilfreich für Marketing, Datenanalysen und das Verständnis von
+          Twitch-Communities.
+        </p>
+      </div>
+    </div>
+
+    <div class="form-box">
+      <h2>Über den Ersteller</h2>
+      <p>
+        Dieses Tool wurde von <a href="https://github.com/Luqqua">Luqqua</a> entwickelt.
+      </p>
+      <p>
+        <strong>Kontakt:</strong> <a href="mailto:Luqqua@proton.me">Luqqua@proton.me</a>
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Alle Rechte vorbehalten.</p>
+  </footer>
+
+</body>
+</html>
