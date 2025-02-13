@@ -2,7 +2,7 @@
 
 **Twitch Chat Analysis Tool for Highlights & KPIs**
 
-ChatVibe is a powerful tool designed to analyze Twitch chat logs and extract highlights, viral moments, and key performance indicators (KPIs) such as message length, chat activity, and community diversity. Optimize your content for platforms like YouTube Shorts and TikTok, and boost your cross-platform reach!
+ChatVibe is a powerful tool designed to analyze Twitch chat logs and extract highlights, viral moments, and key performance indicators (KPIs) such as message length, chat activity, and participation diversity. Optimize your content for platforms like YouTube Shorts and TikTok, and boost your cross-platform reach!
 
 ---
 
