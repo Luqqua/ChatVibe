@@ -1,16 +1,13 @@
-
 import {
   readCSV,
   analyzeChat,
-  defaultBlacklist,
-  generateJSON
+  defaultBlacklist
 } from "./analysis.js";
 import { displayResults } from "./render.js";
 import { validateAndConvert } from "./validateandconvert.js";
 
-const form = document.getElementById("analysis-form");
-const downloadButton = document.getElementById("download-btn");
 
+const form = document.getElementById("analysis-form");
 const spinner = document.getElementById("spinner");
 
 form.addEventListener("submit", handleFormSubmit);
@@ -43,7 +40,7 @@ async function handleFormSubmit(event) {
       .split(",")
       .map(w => w.trim().toLowerCase())
       .filter(w => w.length > 0);
-    
+
     const finalBlacklist = new Set();
     if (useBlacklist) {
       for (const word of defaultBlacklist) {
@@ -53,37 +50,33 @@ async function handleFormSubmit(event) {
     for (const word of customBlacklistArray) {
       finalBlacklist.add(word);
     }
-    
+
     const file = fileInput.files[0];
     const fileContent = await file.text();
     const fileExtension = file.name.split(".").pop().toLowerCase();
-    
+   
     const validatedContent = validateAndConvert(fileContent, fileExtension);
-
+    
     const csvBlob = fileExtension === "json"
       ? new Blob([validatedContent], { type: "text/csv" })
       : file;
+
     
     const chatData = await readCSV(csvBlob);
 
-    const analysisResults = analyzeChat(
+      const analysisResults = analyzeChat(
       chatData,
       aggregationInterval,
       stdFactor,
-      finalBlacklist,   
+      finalBlacklist,
       chatDelay,
       contextBefore,
       contextAfter,
       slopeThreshold,
       useAndLogic
     );
- 
+
     displayResults(analysisResults);
- 
-    const jsonOutput = generateJSON(analysisResults);
- 
-    downloadButton.style.display = "block";
-    downloadButton.onclick = () => downloadJSON(jsonOutput, "twitch_highlights.json");
 
   } catch (error) {
     console.error("Fehler:", error);
@@ -92,15 +85,4 @@ async function handleFormSubmit(event) {
     
     spinner.style.display = "none";
   }
-}
-
-function downloadJSON(jsonData, filename) {
-  const blob = new Blob([jsonData], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
 }
