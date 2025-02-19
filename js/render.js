@@ -79,18 +79,24 @@ export function displayResults(analysisResults) {
 
     const overallBox = document.createElement("div");
     overallBox.classList.add("top-words-box");
+    
     const overallHeading = document.createElement("h3");
     overallHeading.textContent = "Top Words Overall";
     overallBox.appendChild(overallHeading);
+    
+    const innerBox = document.createElement("div");
+    innerBox.classList.add("highlight-box");
+    
     analysisResults.topWordsOverall.forEach(([word, count]) => {
-    const badge = document.createElement("span");
-    badge.classList.add("word-badge");
-    badge.textContent = `${word} (${count})`;
-    overallBox.appendChild(badge);
+      const badge = document.createElement("span");
+      badge.classList.add("word-badge");
+      badge.textContent = `${word} (${count})`;
+      innerBox.appendChild(badge);
     });
+    
+    overallBox.appendChild(innerBox);
     resultsContainer.appendChild(overallBox);
-
-
+    
     const outerHighlightsBox = document.createElement("div");
     outerHighlightsBox.classList.add("outer-highlights-box");
 
