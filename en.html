@@ -55,60 +55,65 @@
         <input type="file" id="chat-file" accept=".csv,.json" required><br><br>
       </div>
 
-      <div class="form-box">
-        <h4>Analysis Settings</h4>
-        <label for="aggregation-interval">
-          Observation Interval (Recommended: 60):
-        </label>
-        <input type="number" id="aggregation-interval" value="60" required><br><br>
+      <details>
+      <summary style="cursor:pointer">Advanced Settings</summary>
 
-        <label for="std-factor">
-          Activity Deviation from Average (Recommended: Factor 2):
-        </label>
-        <input type="number" id="std-factor" step="0.1" value="2" required><br><br>
+        <div class="form-box">
+          <h4>Basic Settings</h4>
+          <label for="aggregation-interval">
+            Observation Interval (Recommended: 60):
+          </label>
+          <input type="number" id="aggregation-interval" value="60" required><br><br>
 
-        <label for="logic-mode">Detection Mode:</label>
-        <select id="logic-mode">
-          <option value="AND">Deviation from Average AND from Previous Interval</option>
-          <option value="OR">Deviation from Average OR from Previous Interval</option>
-        </select><br><br>
+          <label for="std-factor">
+            Activity Deviation from Average (Recommended: Factor 2):
+          </label>
+          <input type="number" id="std-factor" step="0.1" value="2" required><br><br>
 
-        <label for="slope-threshold">
-          Activity Deviation from Previous Interval (Recommended: 10 Messages):
-        </label>
-        <input type="number" id="slope-threshold" value="10" required><br><br>
-      </div>
+          <label for="logic-mode">Detection Mode:</label>
+          <select id="logic-mode">
+            <option value="AND">Deviation from Average AND from Previous Interval</option>
+            <option value="OR">Deviation from Average OR from Previous Interval</option>
+          </select><br><br>
 
-      <div class="form-box">
-        <h4>Time Settings</h4>
-        <label for="context-before">Time Before Highlight (seconds):</label>
-        <input type="number" id="context-before" value="0" required><br><br>
+          <label for="slope-threshold">
+            Activity Deviation from Previous Interval (Recommended: 10 Messages):
+          </label>
+          <input type="number" id="slope-threshold" value="10" required><br><br>
+        </div>
 
-        <label for="context-after">Time After Highlight (seconds):</label>
-        <input type="number" id="context-after" value="0" required><br><br>
+        <div class="form-box">
+          <h4>Time Settings</h4>
+          <label for="context-before">Time Before Highlight (seconds):</label>
+          <input type="number" id="context-before" value="0" required><br><br>
 
-        <label for="chat-delay">Twitch Chat Delay:</label>
-        <select id="chat-delay">
-          <option value="0">0s</option>
-          <option value="2">2s</option>
-          <option value="4">4s</option>
-          <option value="6">6s</option>
-        </select><br><br>
-      </div>
+          <label for="context-after">Time After Highlight (seconds):</label>
+          <input type="number" id="context-after" value="0" required><br><br>
 
-      <div class="form-box">
-        <h4>Word Analysis Settings</h4>
-        <label>
-          <input type="checkbox" id="use-blacklist" checked>
-          Use Default Blacklist (who, is...)
-        </label><br><br>
+          <label for="chat-delay">Twitch Chat Delay:</label>
+          <select id="chat-delay">
+            <option value="0">0s</option>
+            <option value="2">2s</option>
+            <option value="4">4s</option>
+            <option value="6">6s</option>
+          </select><br><br>
+        </div>
 
-        <label for="custom-blacklist">
-          Custom Blacklist (separate words with commas):
-        </label><br>
-        <textarea id="custom-blacklist" rows="3" cols="50"></textarea><br><br>
-      </div>
+        <div class="form-box">
+          <h4>Word Analysis Settings</h4>
+          <label>
+            <input type="checkbox" id="use-blacklist" checked>
+            Use Default Blacklist (who, is...)
+          </label><br><br>
+
+          <label for="custom-blacklist">
+            Custom Blacklist (separate words with commas):
+          </label><br>
+          <textarea id="custom-blacklist" rows="3" cols="50"></textarea><br><br>
+        </div>
       
+      </details>
+
       <button id="final-submit" type="submit">Analyze</button>
     </form>
   </div>
