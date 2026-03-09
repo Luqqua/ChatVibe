@@ -10,7 +10,7 @@ ChatVibe is a powerful tool designed to analyze Twitch chat logs and extract hig
 
 This repository is **not** intended for cloning. To use ChatVibe, please visit our live tool at:
 
-[**https://chatvibe.net**](https://chatvibe.net)
+[**https://chatvibe-dsi.pages.dev**](https://chatvibe-dsi.pages.dev)
 
 ---
 
